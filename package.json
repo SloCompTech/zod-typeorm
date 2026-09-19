@@ -1,0 +1,38 @@
+{
+  "name": "zod-typeorm",
+  "version": "1.0.0",
+  "description": "TypeORM Zod utililities",
+  "keywords": ["database", "orm", "schema", "typeorm", "validation", "zod"],
+  "author": "Martin Dagarin",
+  "license": "MIT",
+  "homepage": "https://github.com/SloCompTech/zod-typeorm#readme",
+  "bugs": {
+    "url": "https://github.com/SloCompTech/zod-typeorm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SloCompTech/zod-typeorm.git"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc -p tsconfig.test.json --noEmit",
+    "test": "vitest run",
+    "check-format": "npx @biomejs/biome check",
+    "format": "npx @biomejs/biome check --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14",
+    "@types/node": "^22.20.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^1.1.1",
+    "zod": "^4.6.2"
+  }
+}
