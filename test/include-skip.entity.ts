@@ -18,6 +18,10 @@ export class TestEntity {
   iProperty!: number;
 
   @Column({ unsigned: true })
-  @ZodProperty({ schema: z.number().min(0), includeForVariants: ['variant2'], transformForVariants: { default: (s) => s } })
+  @ZodProperty({
+    schema: z.number().min(0),
+    includeForVariants: ['variant2'],
+    transformForVariants: { default: (s) => s },
+  })
   sProperty!: number;
 }
