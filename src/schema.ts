@@ -43,9 +43,9 @@ export interface CreateZodSchemaOptions {
  * @param options Options
  * @returns z.ZodObject
  */
-export function createZodSchemaFromEntityForVariant<T>(
+export function createZodSchemaFromEntity<T>(
   entityClass: new () => T,
-  variantName: string,
+  variantName: string = 'default',
   options: CreateZodSchemaOptions = {},
 ): z.ZodObject<z.ZodRawShape> {
   // Get metadata for properties
@@ -95,19 +95,6 @@ export function createZodSchemaFromEntityForVariant<T>(
 }
 
 /**
- * Generate schema from decorated class for 'default' variant
- * @param entityClass Entity class
- * @param options Options
- * @returns z.ZodObject
- */
-export function createZodSchemaFromEntity<T>(
-  entityClass: new () => T,
-  options: CreateZodSchemaOptions = {},
-): z.ZodObject<z.ZodRawShape> {
-  return createZodSchemaFromEntityForVariant(entityClass, 'default', options);
-}
-
-/**
  * Generate schema from decorated class for list of variants
  * @param entityClass Entity class
  * @param variantNames Variant names
@@ -120,7 +107,6 @@ export function createZodSchemasFromEntity<T>(
   options: CreateZodSchemaOptions = {},
 ): Record<string, z.ZodObject<z.ZodRawShape>> {
   const schemaVariants: Record<string, z.ZodObject<z.ZodRawShape>> = {};
-  for (const name of variantNames)
-    schemaVariants[name] = createZodSchemaFromEntityForVariant(entityClass, name, options);
+  for (const name of variantNames) schemaVariants[name] = createZodSchemaFromEntity(entityClass, name, options);
   return schemaVariants;
 }
