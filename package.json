@@ -1,6 +1,6 @@
 {
   "name": "zod-typeorm",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "TypeORM Zod utililities",
   "keywords": ["database", "orm", "schema", "typeorm", "validation", "zod"],
   "author": "Martin Dagarin",
@@ -16,13 +16,14 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc -p tsconfig.test.json --noEmit",
     "test": "vitest run",
     "check-format": "npx @biomejs/biome check",
-    "format": "npx @biomejs/biome check --write"
+    "format": "npx @biomejs/biome check --write",
+    "publish-dry-run": "npm pack --dry-run"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",

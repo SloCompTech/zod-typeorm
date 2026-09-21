@@ -57,6 +57,8 @@ export function createZodSchemaFromEntity<T>(
   const shape: Record<string, z.ZodType> = {};
 
   for (const item of propertyMetadata) {
+    if (!item.propertyKey) continue;
+
     // Go over each property decorator metadata
     // Check if field needs to be skipped (schema skip, skip field because of variant) or if not in include list
     if (
@@ -68,6 +70,8 @@ export function createZodSchemaFromEntity<T>(
 
     const propertyKey = String(item.propertyKey);
     shape[propertyKey] = typeof item.schema === 'function' ? item.schema() : item.schema;
+    if (variantName in item.transformForVariants && item.transformForVariants[variantName])
+      shape[propertyKey] = item.transformForVariants[variantName](shape[propertyKey]);
     if (item.propertyKey && options.transformFields && item.propertyKey in options.transformFields) {
       const transformFn = options.transformFields[item.propertyKey];
       if (transformFn)

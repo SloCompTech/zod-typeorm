@@ -22,6 +22,11 @@ export interface ZodPropertyOptions {
    * Include property only when generating schema for specified variants (whitelist)
    */
   includeForVariants?: string[];
+
+  /**
+   * Transform property for certain variants
+   */
+  transformForVariants?: Record<string, (schema: z.ZodType) => z.ZodType>;
 }
 
 // Metadata storage
@@ -31,6 +36,7 @@ export interface ZodPropertyMetadata {
   optionalForVariants: string[];
   skipForVariants: string[];
   includeForVariants: string[];
+  transformForVariants: Record<string, (schema: z.ZodType) => z.ZodType>;
 }
 
 export function ZodProperty(options: ZodPropertyOptions | z.ZodType | (() => z.ZodType)): PropertyDecorator {
@@ -57,6 +63,7 @@ export function ZodProperty(options: ZodPropertyOptions | z.ZodType | (() => z.Z
             optionalForVariants: [],
             skipForVariants: [],
             includeForVariants: [],
+            transformForVariants: {},
           }
         : {
             // ZodType is provided with additional properties
@@ -64,6 +71,7 @@ export function ZodProperty(options: ZodPropertyOptions | z.ZodType | (() => z.Z
             optionalForVariants: options.optionalForVariants ?? [],
             skipForVariants: options.skipForVariants ?? [],
             includeForVariants: options.includeForVariants ?? [],
+            transformForVariants: options.transformForVariants ?? {},
           }),
     };
 

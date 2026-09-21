@@ -14,10 +14,10 @@ export class TestEntity {
   name!: string;
 
   @Column({ unsigned: true })
-  @ZodProperty({ schema: z.number().min(0), includeForVariants: ['variant1'], skipForVariants: ['variant2'] })
+  @ZodProperty({ schema: z.number().min(0), includeForVariants: ['variant1'] })
   iProperty!: number;
 
   @Column({ unsigned: true })
-  @ZodProperty({ schema: z.number().min(0), skipForVariants: ['variant1'], includeForVariants: ['variant2'] })
+  @ZodProperty({ schema: z.number().min(0), includeForVariants: ['variant2'], transformForVariants: { default: (s) => s } })
   sProperty!: number;
 }
