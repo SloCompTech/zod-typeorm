@@ -6,6 +6,5 @@ export * from './decorators/index.js';
 export {
   type CreateZodSchemaOptions,
   createZodSchemaFromEntity,
-  createZodSchemaFromEntityForVariant,
   createZodSchemasFromEntity,
 } from './schema.js';

@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: 26
       - run: npm ci
+      - run: npm run typecheck
       - run: npm run check-format
       - run: npm run test
       - run: npm run build
@@ -34,6 +35,7 @@ jobs:
           node-version: 26
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+      - run: npm run typecheck
       - run: npm run check-format
       - run: npm run test
       - run: npm run build

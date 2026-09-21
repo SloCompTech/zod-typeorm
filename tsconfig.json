@@ -22,7 +22,6 @@
     "noImplicitReturns": true,
     "noImplicitOverride": true,
     "noUnusedLocals": true,
-    "noPropertyAccessFromIndexSignature": true,
 
     // Recommended Options
     "noUncheckedSideEffectImports": true,

@@ -15,9 +15,9 @@ describe('basic', () => {
   });
 
   test('schemas should have keys', () => {
-    const keys1 = Object.keys(schema.variant1.shape);
-    const keys2 = Object.keys(schema.variant2.shape);
-    const keys3 = Object.keys(schema.variant3.shape);
+    const keys1 = Object.keys(schema.variant1?.shape || {});
+    const keys2 = Object.keys(schema.variant2?.shape || {});
+    const keys3 = Object.keys(schema.variant3?.shape || {});
 
     expect(keys1).toContain('id');
     expect(keys1).toContain('name');

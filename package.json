@@ -1,6 +1,6 @@
 {
   "name": "zod-typeorm",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "TypeORM Zod utililities",
   "keywords": ["database", "orm", "schema", "typeorm", "validation", "zod"],
   "author": "Martin Dagarin",
